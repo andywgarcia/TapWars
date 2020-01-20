@@ -17,16 +17,16 @@ function PlayerArea({ onTap, player }) {
         height: 50,
         backgroundColor: playerColors[player]
       }}
+      onTouchStart={() => {
+          onTap(player);
+          setTapCount(tapCount + 1);
+        }}
     >
       <View
         style={{
           height: "100%",
           //   justifyContent: "center",
           alignItems: "center"
-        }}
-        onTouchStart={() => {
-          onTap(player);
-          setTapCount(tapCount + 1);
         }}
       >
         {player === 1 ? <View style={{ flex: 7 }} /> : <></>}
