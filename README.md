@@ -4,6 +4,6 @@ Just a game that I thought might be fun where you have to tap faster than your o
 
 # Getting started
 
-1. Run `npm install`
-1. Install expo globally `npm install -g expo expo-cli`
-1. Run `expo start` and it should open a browser. Follow the instructions from there.
+#. Run `npm install`
+#. Install expo globally `npm install -g expo expo-cli`
+#. Run `expo start` and it should open a browser. Follow the instructions from there.
