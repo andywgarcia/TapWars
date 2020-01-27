@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { View, TouchableWithoutFeedback, Text } from "react-native";
 
 const playerColors = {
-  0: "gray",
-  1: "darkgray",
+  playerOne: "gray",
+  playerTwo: "darkgray",
   2: "lightgray"
 };
 
-function PlayerArea({ onTap, player }) {
+function PlayerArea({ onTap, player}) {
   const [tapCount, setTapCount] = useState(0);
 
   return (
@@ -18,9 +18,9 @@ function PlayerArea({ onTap, player }) {
         backgroundColor: playerColors[player]
       }}
       onTouchStart={() => {
-          onTap(player);
-          setTapCount(tapCount + 1);
-        }}
+        onTap(player);
+        setTapCount(tapCount + 1);
+      }}
     >
       <View
         style={{
@@ -29,7 +29,7 @@ function PlayerArea({ onTap, player }) {
           alignItems: "center"
         }}
       >
-        {player === 1 ? <View style={{ flex: 7 }} /> : <></>}
+        {player === 'playerTwo' ? <View style={{ flex: 7 }} /> : <></>}
         <View
           style={{
             width: "100%",
@@ -52,7 +52,7 @@ function PlayerArea({ onTap, player }) {
             Goal
           </Text>
         </View>
-        {player !== 1 ? <View style={{ flex: 7 }} /> : <></>}
+        {player !== 'playerTwo' ? <View style={{ flex: 7 }} /> : <></>}
       </View>
       <View
         style={{
