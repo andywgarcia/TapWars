@@ -1,13 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Game from "./views/Game";
-import Nav from './views/Nav'
+import MainContainer from './containers/MainContainer'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Nav />
-      <Game />
+      <MainContainer />
     </View>
   );
 }

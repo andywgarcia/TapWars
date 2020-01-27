@@ -22,36 +22,47 @@ const playerModifier = {
   1: currentDot => currentDot + difficultyModifier[difficulty]
 };
 
-function Game() {
-  const [score, setScore] = useState(0);
+function Game(props) {
+  const [position, setPosition] = useState(0);
 
   const showWinnerMessage = winner => {
     Alert.alert(`Player ${winner} Wins`, "", [
       {
         text: "Start Over",
         onPress: () => {
-          setScore(0);
+          setPosition(0);
+        }
+      },
+      {
+        text: "Back To Nav",
+        onPress: () => {
+          setPosition(0)
+          props.setHidden();
         }
       }
     ]);
   };
-  if (score <= -36) {
+
+
+  if (position <= -36) {
     showWinnerMessage(1);
-  } else if (score >= 36) {
+  } else if (position >= 36) {
     showWinnerMessage(2);
   }
 
   const onPlayerTap = player => {
-    const newScore = playerModifier[player](score);
-    setScore(newScore);
+    const newPosition = playerModifier[player](position);
+    setPosition(newPosition);
   };
+
   return (
     <React.Fragment>
       <PlayerArea player={0} onTap={onPlayerTap} />
       <PlayerArea player={1} onTap={onPlayerTap} />
-      <Dot offset={score * 10} />
+      <Dot offset={position * 10} />
     </React.Fragment>
   );
+
 }
 
 export default Game;
