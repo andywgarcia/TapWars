@@ -10,13 +10,13 @@ export default class MainContainer extends React.Component {
     this.state = {
       navHidden: true,
       playerDifficulty: {
-        playerOne: 1,
+        playerOne: 3,
         playerTwo: 3
       }
     }
   }
 
-  toggleDifficulty = player => {
+  cycleDifficulty = player => {
     if (this.state.playerDifficulty[player] === 1) {
       this.setState({
         playerDifficulty: {
@@ -44,7 +44,7 @@ export default class MainContainer extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Nav hidden={this.state.navHidden} setHidden={this.setHidden} playerDifficulty={this.state.playerDifficulty} toggleDifficulty={this.toggleDifficulty}/>
+        <Nav hidden={this.state.navHidden} setHidden={this.setHidden} playerDifficulty={this.state.playerDifficulty} cycleDifficulty={this.cycleDifficulty}/>
         <Game setHidden={this.setHidden} playerDifficulty={this.state.playerDifficulty} />
       </React.Fragment>
     );

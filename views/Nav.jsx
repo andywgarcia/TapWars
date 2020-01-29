@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, Modal, Button, Picker } from "react-native";
 
+const PLAYER_ONE = 'playerOne'
+const PLAYER_TWO = 'playerTwo'
+
 function Nav(props) {
 
   const playerDifficultyRender = difficulty => {
@@ -20,11 +23,11 @@ function Nav(props) {
       </View>
       <View>
         <Text>Player 1 Difficulty = {playerDifficultyRender(props.playerDifficulty.playerOne)} </Text>
-        <Button title="Set P1 Difficulty" onPress={() => props.toggleDifficulty('playerOne')} />
+        <Button title="Set P1 Difficulty" onPress={() => props.cycleDifficulty(PLAYER_ONE)} />
       </View>
       <View>
         <Text>Player 2 Difficulty = {playerDifficultyRender(props.playerDifficulty.playerTwo)}</Text>
-        <Button title="Set P2 Difficulty" onPress={() => props.toggleDifficulty('playerTwo')} />
+        <Button title="Set P2 Difficulty" onPress={() => props.cycleDifficulty(PLAYER_TWO)} />
       </View>
       <Button title="Start Game" onPress={props.setHidden} />
     </Modal>

@@ -7,6 +7,9 @@ const playerColors = {
   2: "lightgray"
 };
 
+const PLAYER_ONE = 'playerOne'
+const PLAYER_TWO = 'playerTwo'
+
 function PlayerArea({ onTap, player}) {
   const [tapCount, setTapCount] = useState(0);
 
@@ -29,7 +32,7 @@ function PlayerArea({ onTap, player}) {
           alignItems: "center"
         }}
       >
-        {player === 'playerTwo' ? <View style={{ flex: 7 }} /> : <></>}
+        {player === PLAYER_TWO ? <View style={{ flex: 7 }} /> : <></>}
         <View
           style={{
             width: "100%",
@@ -45,14 +48,14 @@ function PlayerArea({ onTap, player}) {
               fontSize: 30,
               fontWeight: "bold",
               color: "white",
-              transform: [{ rotate: player === 0 ? "180deg" : "0deg" }]
+              transform: [{ rotate: player === PLAYER_ONE ? "180deg" : "0deg" }]
             }}
           >
             {/* {tapCount} */}
             Goal
           </Text>
         </View>
-        {player !== 'playerTwo' ? <View style={{ flex: 7 }} /> : <></>}
+        {player !== PLAYER_TWO ? <View style={{ flex: 7 }} /> : <></>}
       </View>
       <View
         style={{

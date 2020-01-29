@@ -3,6 +3,9 @@ import PlayerArea from "../components/PlayerArea";
 import Dot from "../components/Dot";
 import { Alert } from "react-native";
 
+const PLAYER_ONE = 'playerOne'
+const PLAYER_TWO = 'playerTwo'
+
 function Game(props) {
   const [position, setPosition] = useState(0);
 
@@ -41,8 +44,8 @@ function Game(props) {
 
   return (
     <React.Fragment>
-      <PlayerArea player={'playerOne'} onTap={onPlayerTap} />
-      <PlayerArea player={'playerTwo'} onTap={onPlayerTap} />
+      <PlayerArea player={PLAYER_ONE} onTap={onPlayerTap} />
+      <PlayerArea player={PLAYER_TWO} onTap={onPlayerTap} />
       <Dot offset={position * 10} />
     </React.Fragment>
   );
