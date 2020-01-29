@@ -50,24 +50,3 @@ export default class MainContainer extends React.Component {
     );
   }
 }
-
-// 1 is hardest
-// 3 is easiest
-// const difficulties = {
-//   EASY: "Easy",
-//   MEDIUM: "Medium",
-//   HARD: "Hard"
-// };
-//
-// const difficultyModifier = {
-//   [difficulties.EASY]: 3,
-//   [difficulties.MEDIUM]: 2,
-//   [difficulties.HARD]: 1
-// };
-//
-// const difficulty = difficulties.EASY;
-//
-// const playerModifier = {
-//   playerOne: (currentDot) => currentDot - difficultyModifier[difficulty],
-//   playerTwo: (currentDot) => currentDot + difficultyModifier[difficulty]
-// };
