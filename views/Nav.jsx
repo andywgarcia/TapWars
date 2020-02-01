@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Modal, Button, Picker } from "react-native";
+import { TouchableHighlight, View, Text, Modal, Button, Picker } from "react-native";
 
 const PLAYER_ONE = 'playerOne'
 const PLAYER_TWO = 'playerTwo'
@@ -18,18 +18,48 @@ function Nav(props) {
 
   return (
     <Modal visible={props.hidden}>
-      <View>
-        <Text>Welcome To Tap Wars</Text>
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'light-grey'
+      }}>
+        <View style={{
+            flex: 1,
+            justifyContent: 'center',
+            transform: [{ rotate: "180deg" }]
+          }}>
+          <Text>Player 1 Difficulty </Text>
+          <Button title={playerDifficultyRender(props.playerDifficulty.playerOne)} onPress={() => props.cycleDifficulty(PLAYER_ONE)} />
+          
+        </View>
+        <View style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItem: 'center'
+          }}>
+          <TouchableHighlight onPress={props.setHidden}
+            style={{
+              padding: 5,
+              height: 200,
+              width: 200,
+              borderRadius:400,
+              backgroundColor:'red',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }} >
+            <View><Text>Start Game</Text></View>
+          </TouchableHighlight>
+        </View>
+        <View style={{
+            flex: 1,
+            justifyContent: 'center'
+          }}>
+          <Text>Player 2 Difficulty </Text>
+          <Button title={playerDifficultyRender(props.playerDifficulty.playerTwo)} onPress={() => props.cycleDifficulty(PLAYER_TWO)} />
+        </View>
       </View>
-      <View>
-        <Text>Player 1 Difficulty = {playerDifficultyRender(props.playerDifficulty.playerOne)} </Text>
-        <Button title="Set P1 Difficulty" onPress={() => props.cycleDifficulty(PLAYER_ONE)} />
-      </View>
-      <View>
-        <Text>Player 2 Difficulty = {playerDifficultyRender(props.playerDifficulty.playerTwo)}</Text>
-        <Button title="Set P2 Difficulty" onPress={() => props.cycleDifficulty(PLAYER_TWO)} />
-      </View>
-      <Button title="Start Game" onPress={props.setHidden} />
     </Modal>
   );
 }
