@@ -28,11 +28,21 @@ function Nav(props) {
         <View style={{
             flex: 1,
             justifyContent: 'center',
+            alignItem: 'center',
             transform: [{ rotate: "180deg" }]
           }}>
-          <Text>Player 1 Difficulty </Text>
-          <Button title={playerDifficultyRender(props.playerDifficulty.playerOne)} onPress={() => props.cycleDifficulty(PLAYER_ONE)} />
-          
+          <TouchableHighlight onPress={() => props.cycleDifficulty(PLAYER_ONE)}
+            style={{
+              padding: 5,
+              height: 75,
+              width: 75,
+              borderRadius:400,
+              backgroundColor:'lightblue',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }} >
+            <View><Text>{playerDifficultyRender(props.playerDifficulty.playerOne)}</Text></View>
+          </TouchableHighlight>
         </View>
         <View style={{
             flex: 1,
@@ -56,8 +66,18 @@ function Nav(props) {
             flex: 1,
             justifyContent: 'center'
           }}>
-          <Text>Player 2 Difficulty </Text>
-          <Button title={playerDifficultyRender(props.playerDifficulty.playerTwo)} onPress={() => props.cycleDifficulty(PLAYER_TWO)} />
+          <TouchableHighlight onPress={() => props.cycleDifficulty(PLAYER_TWO)}
+            style={{
+              padding: 5,
+              height: 75,
+              width: 75,
+              borderRadius:400,
+              backgroundColor:'lightblue',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }} >
+            <View><Text>{playerDifficultyRender(props.playerDifficulty.playerTwo)}</Text></View>
+          </TouchableHighlight>
         </View>
       </View>
     </Modal>
