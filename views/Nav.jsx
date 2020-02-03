@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableHighlight, View, Text, Modal, Button, Picker } from "react-native";
+import { StyleSheet, TouchableHighlight, View, Text, Modal, Button, Picker } from "react-native";
 
 const PLAYER_ONE = 'playerOne'
 const PLAYER_TWO = 'playerTwo'
@@ -17,70 +17,82 @@ function Nav(props) {
   }
 
   return (
-    <Modal visible={props.hidden} style={{backgroundColor: 'rgba(52, 52, 52, 0.8)'}}>
-      <View style={{
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}>
-        <View style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItem: 'center',
-            transform: [{ rotate: "180deg" }]
-          }}>
-          <TouchableHighlight onPress={() => props.cycleDifficulty(PLAYER_ONE)}
-            style={{
-              padding: 5,
-              height: 75,
-              width: 75,
-              borderRadius:400,
-              backgroundColor:'lightblue',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }} >
-            <View><Text>{playerDifficultyRender(props.playerDifficulty.playerOne)}</Text></View>
+    <Modal transparent visible={props.hidden}>
+      <View style={styles.navContainer}>
+        <View style={styles.playerOneContainer}>
+          <TouchableHighlight
+            onPress={() => props.cycleDifficulty(PLAYER_ONE)}
+            style={styles.playerOneButton} >
+            <Text>{playerDifficultyRender(props.playerDifficulty.playerOne)}</Text>
           </TouchableHighlight>
         </View>
-        <View style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItem: 'center'
-          }}>
+        <View style={styles.tapWarsContainer}>
           <TouchableHighlight onPress={props.setHidden}
-            style={{
-              padding: 5,
-              height: 200,
-              width: 200,
-              borderRadius:400,
-              backgroundColor:'red',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }} >
-            <View><Text>Start Game</Text></View>
+            style={styles.tapWarsButton} >
+            <Text>TAP WARS!</Text>
           </TouchableHighlight>
         </View>
-        <View style={{
-            flex: 1,
-            justifyContent: 'center'
-          }}>
+        <View style={styles.playerTwoContainer}>
           <TouchableHighlight onPress={() => props.cycleDifficulty(PLAYER_TWO)}
-            style={{
-              padding: 5,
-              height: 75,
-              width: 75,
-              borderRadius:400,
-              backgroundColor:'lightblue',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }} >
-            <View><Text>{playerDifficultyRender(props.playerDifficulty.playerTwo)}</Text></View>
+            style={styles.playerTwoButton} >
+            <Text>{playerDifficultyRender(props.playerDifficulty.playerTwo)}</Text>
           </TouchableHighlight>
         </View>
       </View>
     </Modal>
   );
 }
+
+const styles = StyleSheet.create({
+  navContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  playerOneContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    transform: [{ rotate: "180deg" }]
+  },
+  playerOneButton: {
+    padding: 5,
+    height: 75,
+    width: 75,
+    borderRadius:400,
+    backgroundColor:'lightblue',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  playerTwoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  playerTwoButton: {
+    padding: 5,
+    height: 75,
+    width: 75,
+    borderRadius:400,
+    backgroundColor:'lightblue',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  tapWarsContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  tapWarsButton: {
+    padding: 5,
+    height: 200,
+    width: 200,
+    borderRadius:400,
+    backgroundColor:'white',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
 
 export default Nav;
