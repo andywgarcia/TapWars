@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Modal, Button } from "react-native";
 import Nav from '../views/Nav'
 import Game from '../views/Game'
+import CountDownTimer from '../views/CountDownTimer'
 
 export default class MainContainer extends React.Component {
 

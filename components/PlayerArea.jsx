@@ -3,8 +3,7 @@ import { View, TouchableWithoutFeedback, Text } from "react-native";
 
 const playerColors = {
   playerOne: "gray",
-  playerTwo: "darkgray",
-  2: "lightgray"
+  playerTwo: "darkgray"
 };
 
 const PLAYER_ONE = 'playerOne'
