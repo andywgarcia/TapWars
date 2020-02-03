@@ -17,13 +17,12 @@ function Nav(props) {
   }
 
   return (
-    <Modal visible={props.hidden}>
+    <Modal visible={props.hidden} style={{backgroundColor: 'rgba(52, 52, 52, 0.8)'}}>
       <View style={{
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: 'light-grey'
+        alignItems: 'center'
       }}>
         <View style={{
             flex: 1,

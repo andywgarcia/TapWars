@@ -28,7 +28,7 @@ function PlayerArea({ onTap, player}) {
       <View
         style={{
           height: "100%",
-          //   justifyContent: "center",
+          justifyContent: "center",
           alignItems: "center"
         }}
       >
