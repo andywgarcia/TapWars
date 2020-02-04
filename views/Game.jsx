@@ -21,7 +21,7 @@ function Game(props) {
         text: "Back To Nav",
         onPress: () => {
           setPosition(0)
-          props.setHidden();
+          props.setNavBeginning();
         }
       }
     ]);

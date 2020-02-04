@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, TouchableHighlight, View, Text, Modal, Button, Picker } from "react-native";
+import { StyleSheet, TouchableHighlight, View, Text, Modal, Button, Picker, Animated } from "react-native";
 
 const PLAYER_ONE = 'playerOne'
 const PLAYER_TWO = 'playerTwo'
@@ -16,27 +16,44 @@ function Nav(props) {
     }
   }
 
+  const timerRender = timer => {
+    if (timer === 3) {
+      return "III"
+    } else if (timer === 2) {
+      return "II"
+    } else if (timer === 1) {
+      return "I"
+    } else {
+      return "TAP WARS!!"
+    }
+  }
+
   return (
     <Modal transparent visible={props.hidden}>
       <View style={styles.navContainer}>
         <View style={styles.playerOneContainer}>
-          <TouchableHighlight
-            onPress={() => props.cycleDifficulty(PLAYER_ONE)}
-            style={styles.playerOneButton} >
-            <Text>{playerDifficultyRender(props.playerDifficulty.playerOne)}</Text>
-          </TouchableHighlight>
+          {props.playerContainer?
+            <TouchableHighlight
+              onPress={() => props.cycleDifficulty(PLAYER_ONE)}
+              style={styles.playerOneButton} >
+              <Text>{playerDifficultyRender(props.playerDifficulty.playerOne)}</Text>
+            </TouchableHighlight>: null
+          }
         </View>
         <View style={styles.tapWarsContainer}>
-          <TouchableHighlight onPress={props.setHidden}
-            style={styles.tapWarsButton} >
-            <Text>TAP WARS!</Text>
+          <TouchableHighlight onPress={props.togglePlayerField}
+            style={[styles.tapWarsButton, {height: props.startGameBallSize,
+            width: props.startGameBallSize}]} >
+            <Text>{timerRender(props.startGameText)}</Text>
           </TouchableHighlight>
         </View>
         <View style={styles.playerTwoContainer}>
-          <TouchableHighlight onPress={() => props.cycleDifficulty(PLAYER_TWO)}
-            style={styles.playerTwoButton} >
-            <Text>{playerDifficultyRender(props.playerDifficulty.playerTwo)}</Text>
-          </TouchableHighlight>
+          {props.playerContainer?
+            <TouchableHighlight onPress={() => props.cycleDifficulty(PLAYER_TWO)}
+              style={styles.playerTwoButton} >
+              <Text>{playerDifficultyRender(props.playerDifficulty.playerTwo)}</Text>
+            </TouchableHighlight>: null
+          }
         </View>
       </View>
     </Modal>
@@ -86,8 +103,8 @@ const styles = StyleSheet.create({
   },
   tapWarsButton: {
     padding: 5,
-    height: 200,
-    width: 200,
+    top: "-4.5%",
+    right: "1%",
     borderRadius:400,
     backgroundColor:'white',
     justifyContent: 'center',
