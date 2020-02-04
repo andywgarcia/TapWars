@@ -16,18 +16,6 @@ function Nav(props) {
     }
   }
 
-  const timerRender = timer => {
-    if (timer === 3) {
-      return "III"
-    } else if (timer === 2) {
-      return "II"
-    } else if (timer === 1) {
-      return "I"
-    } else {
-      return "TAP WARS!!"
-    }
-  }
-
   return (
     <Modal transparent visible={props.hidden}>
       <View style={styles.navContainer}>
@@ -44,7 +32,7 @@ function Nav(props) {
           <TouchableHighlight onPress={props.togglePlayerField}
             style={[styles.tapWarsButton, {height: props.startGameBallSize,
             width: props.startGameBallSize}]} >
-            <Text>{timerRender(props.startGameText)}</Text>
+            <Text>{props.startGameText}</Text>
           </TouchableHighlight>
         </View>
         <View style={styles.playerTwoContainer}>
@@ -89,6 +77,7 @@ const styles = StyleSheet.create({
   },
   playerTwoButton: {
     padding: 5,
+    top: "-9%",
     height: 75,
     width: 75,
     borderRadius:400,

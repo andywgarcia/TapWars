@@ -4,7 +4,8 @@ import Nav from '../views/Nav'
 import Game from '../views/Game'
 import CountDownTimer from '../views/CountDownTimer'
 
-let timerVar;
+let timerInterval;
+const TAP_WARS = "TAP WARS!"
 
 export default class MainContainer extends React.Component {
 
@@ -13,7 +14,7 @@ export default class MainContainer extends React.Component {
     this.state = {
       navHidden: true,
       playerContainer: true,
-      startGameText: 'Tap Wars!',
+      startGameText: TAP_WARS,
       startGameBallSize: 200,
       playerDifficulty: {
         playerOne: 3,
@@ -48,19 +49,19 @@ export default class MainContainer extends React.Component {
   }
 
   setTimer = () => {
-    if (this.state.startGameText === "Tap Wars!") {
+    if (this.state.startGameText === TAP_WARS) {
       this.setState({
         startGameText: 3,
         startGameBallSize: this.state.startGameBallSize - 50
       })
-    } else if (this.state.startGameText !== "Tap Wars!") {
+    } else if (this.state.startGameText !== TAP_WARS) {
       this.setState({
         startGameText: this.state.startGameText - 1,
         startGameBallSize: this.state.startGameBallSize - 50
       })
       if (this.state.startGameText === 0) {
         this.setHidden()
-        clearInterval(timerVar)
+        clearInterval(timerInterval)
       }
     }
   }
@@ -69,20 +70,21 @@ export default class MainContainer extends React.Component {
     this.setState({
       navHidden: true,
       playerContainer: true,
-      startGameText: 'Tap Wars!',
+      startGameText: TAP_WARS,
       startGameBallSize: 200
     })
   }
 
   togglePlayerField = () => {
     this.setState({
-      playerContainer: !this.state.playerContainer
+      playerContainer: !this.state.playerContainer,
+      transparency: true
     })
-    timerVar = setInterval(this.setTimer, 1000)
+    timerInterval = setInterval(this.setTimer, 1000)
   }
 
   render() {
-    return (
+    return(
       <React.Fragment>
         <Nav
           hidden={this.state.navHidden}
