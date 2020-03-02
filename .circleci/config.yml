@@ -27,7 +27,9 @@ jobs:
                 fi
             - run: npx expo publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL
 workflows:
-  build-and-test:
+  full-workflow:
     jobs:
       - build
-      - publish
+      - publish:
+          requires:
+            - build
