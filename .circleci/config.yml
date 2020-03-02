@@ -1,0 +1,35 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+jobs:
+  build:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm run test
+  publish: &publish
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
+            - run: |
+                if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                  echo 'export EXPO_RELEASE_CHANNEL="default"' >> $BASH_ENV
+                else
+                  echo 'export EXPO_RELEASE_CHANNEL=$CIRCLE_BRANCH' >> $BASH_ENV
+                fi
+            - run: npx expo publish --non-interactive --max-workers 1 --release-channel $EXPO_RELEASE_CHANNEL
+workflows:
+  full-workflow:
+    jobs:
+      - build
+      - publish:
+          requires:
+            - build
