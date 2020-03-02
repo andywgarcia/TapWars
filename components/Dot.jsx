@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { Animated } from "react-native";
 
 function Dot({ offset }) {
+
   const [dotOffset] = useState(new Animated.Value(0));
+
   Animated.timing(dotOffset, {
     toValue: offset,
     duration: 100
   }).start();
+
   return (
     <Animated.View
       style={{
@@ -25,6 +28,7 @@ function Dot({ offset }) {
       }}
     />
   );
+  
 }
 
 Dot.defaultProps = {

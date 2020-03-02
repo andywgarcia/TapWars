@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { View, TouchableWithoutFeedback, Text } from "react-native";
 
 const playerColors = {
-  0: "gray",
-  1: "darkgray",
-  2: "lightgray"
+  playerOne: "gray",
+  playerTwo: "darkgray"
 };
 
-function PlayerArea({ onTap, player }) {
+const PLAYER_ONE = 'playerOne'
+const PLAYER_TWO = 'playerTwo'
+
+function PlayerArea({ onTap, player}) {
   const [tapCount, setTapCount] = useState(0);
 
   return (
@@ -17,19 +19,19 @@ function PlayerArea({ onTap, player }) {
         height: 50,
         backgroundColor: playerColors[player]
       }}
+      onTouchStart={() => {
+        onTap(player);
+        setTapCount(tapCount + 1);
+      }}
     >
       <View
         style={{
           height: "100%",
-          //   justifyContent: "center",
+          justifyContent: "center",
           alignItems: "center"
         }}
-        onTouchStart={() => {
-          onTap(player);
-          setTapCount(tapCount + 1);
-        }}
       >
-        {player === 1 ? <View style={{ flex: 7 }} /> : <></>}
+        {player === PLAYER_TWO ? <View style={{ flex: 7 }} /> : <></>}
         <View
           style={{
             width: "100%",
@@ -45,14 +47,14 @@ function PlayerArea({ onTap, player }) {
               fontSize: 30,
               fontWeight: "bold",
               color: "white",
-              transform: [{ rotate: player === 0 ? "180deg" : "0deg" }]
+              transform: [{ rotate: player === PLAYER_ONE ? "180deg" : "0deg" }]
             }}
           >
             {/* {tapCount} */}
             Goal
           </Text>
         </View>
-        {player !== 1 ? <View style={{ flex: 7 }} /> : <></>}
+        {player !== PLAYER_TWO ? <View style={{ flex: 7 }} /> : <></>}
       </View>
       <View
         style={{
